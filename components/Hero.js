@@ -8,6 +8,5 @@ const Hero = () => {
     </div>
   );
 };
-Hero.skeletonLoader = <Skeleton active />;
 
 export default Hero;
