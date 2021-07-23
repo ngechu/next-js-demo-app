@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import Layout from "../components/Layout";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { Hydrate } from "react-query/hydration";
+// import apiData from "./apiData.json";
 
 export const CartContext = React.createContext();
 function MyApp({ Component, pageProps }) {
