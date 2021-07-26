@@ -4,12 +4,10 @@ import Hero from "../components/Hero";
 import { Skeleton, Space, Divider } from "antd";
 import { useQuery, QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
-
+import { mockData } from "../mocks/apiData";
 //Fetch data
 const fetchProducts = async () => {
-  const response = await fetch("https://fakestoreapi.com/products?limit=8");
-  const data = await response.json();
-  return data;
+  return mockData;
 };
 
 export async function getStaticProps() {

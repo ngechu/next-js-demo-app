@@ -1,17 +1,14 @@
 import { useRouter } from "next/router";
 import { Skeleton } from "antd";
 import { useQuery, QueryClient } from "react-query";
+import { mockData } from "../../mocks/apiData";
 
 const fetchProduct = async (id) => {
   const response = await fetch(`https://fakestoreapi.com/products/${id}`);
   const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
   return data;
 };
+
 const Product = () => {
   const router = useRouter();
 
@@ -22,6 +19,7 @@ const Product = () => {
   if (isLoading) {
     return <Skeleton active />;
   }
+
   return (
     <div>
       <div className="container h-4/5 rounded shadow-xl bg-white grid grid-cols-3 ">
@@ -43,18 +41,7 @@ const Product = () => {
             </h3>
           </div>
         </div>
-        <div className="col-span-1 bg-blue-100 flex justify-center items-center pb-8">
-          <button
-            onClick={() => {
-              router.push("/");
-            }}
-            className="w-2/3 flex content-center justify-center h-16 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
-          >
-            <h3 className="text-2xl font-semibold self-center text-indigo-100 ">
-              Add to Cart
-            </h3>
-          </button>
-        </div>
+        <div className="col-span-1 bg-blue-100 flex justify-center items-center pb-8"></div>
       </div>
     </div>
   );

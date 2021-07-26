@@ -45,7 +45,7 @@ const Card = ({ title, category, price, image, id }) => {
             </span>
           </div>
           <div className="flex justify-center">
-            <h2 className="text-lg text-white font-semibold">$ {price}</h2>
+            <h2 className="text-lg text-white font-semibold">KES {price}</h2>
           </div>
           <button
             onClick={handleClick}
