@@ -3,6 +3,8 @@ import "tailwindcss/tailwind.css";
 import "antd/dist/antd.css";
 import { ReactQueryDevtools } from "react-query/devtools";
 import Layout from "../components/Layout";
+
+import { CartProvider } from "../store/CartProvider";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { Hydrate } from "react-query/hydration";
 // import apiData from "./apiData.json";
@@ -12,21 +14,14 @@ function MyApp({ Component, pageProps }) {
   // Create a client
   const [queryClient] = React.useState(() => new QueryClient());
 
-  //Create cart context
-  const [cartCount, setCartCount] = React.useState(
-    typeof window !== "undefined" && localStorage.getItem("cart")
-      ? JSON.parse(`${localStorage.getItem("cart")}`).length
-      : 0
-  );
-
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <CartContext.Provider value={{ cartCount, setCartCount }}>
+        <CartProvider>
           <Layout>
             <Component {...pageProps} />
           </Layout>
-        </CartContext.Provider>
+        </CartProvider>
       </Hydrate>
       <ReactQueryDevtools initialIsOpen />
     </QueryClientProvider>

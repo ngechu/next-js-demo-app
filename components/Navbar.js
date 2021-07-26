@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useContext, useEffect } from "react";
-import { CartContext } from "../pages/_app";
+import { CartContext } from "../store/CartProvider";
 
 const Navbar = () => {
   let myCart = "";
@@ -10,9 +10,11 @@ const Navbar = () => {
 
   const { cartCount, setCartCount } = useContext(CartContext);
   useEffect(() => {
-    if (myCart.length) {
-      setCartCount(myCart.length);
-    }
+    const itemCount = myCart.reduce((a, c) => (a += c.qty), 0);
+    setCartCount(itemCount);
+    // if (myCart.length) {
+    //   setCartCount(myCart.length);
+    // }
   }, [cartCount]);
 
   return (

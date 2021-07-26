@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useContext, useEffect } from "react";
-import { CartContext } from "../pages/_app";
+import { CartContext } from "../store/CartProvider";
 
 const Card = ({ title, category, price, image, id }) => {
   const { cartCount, setCartCount } = useContext(CartContext);
@@ -12,17 +12,26 @@ const Card = ({ title, category, price, image, id }) => {
   }
 
   const handleClick = () => {
-    let productObj = {
-      title: title,
-      category: category,
-      price: price,
-      image: image,
-      id: id,
-    };
-    cart.push(productObj);
+    const exist = cart.findIndex((v) => v.id == id);
+    if (exist === -1) {
+      let productObj = {
+        title: title,
+        category: category,
+        price: price,
+        image: image,
+        id: id,
+        qty: 1,
+      };
+      cart.push(productObj);
+    } else {
+      cart[exist].qty += 1;
+    }
+
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    setCartCount(cart.length);
+    const itemCount = cart.reduce((a, c) => (a += c.qty), 0);
+
+    setCartCount(itemCount);
   };
 
   return (
