@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { CartContext } from "../store/CartProvider";
 import { Skeleton } from "antd";
+import { v4 as uuidv4 } from "uuid";
 
 const Cart = () => {
   const { cartCount, setCartCount } = useContext(CartContext);
@@ -41,8 +42,8 @@ const Cart = () => {
       data: {
         locale: "ke",
         apiKey: "683f70e0-ee0d-11eb-9a03-0242ac130003",
-        orderNumber: "44331",
-        resultUrl: "https://mypocket.doctor/",
+        orderNumber: uuidv4(),
+        resultUrl: "https://trialshop-dev-gpg.k8s.tracom.co.ke:2021/success",
         callbackUrl: "https://mypocket.doctor/cbresult",
         checkoutLines: apiPayload,
       },
@@ -60,6 +61,8 @@ const Cart = () => {
       requestOptions
     );
     const res = await response.json();
+    localStorage.setItem("cart", JSON.stringify([]));
+
     window.location.replace(res.data);
   };
   useEffect(() => {
