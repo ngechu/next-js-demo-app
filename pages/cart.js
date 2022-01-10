@@ -43,7 +43,7 @@ const Cart = () => {
         locale: "ke",
         apiKey: "683f70e0-ee0d-11eb-9a03-0242ac130003",
         orderNumber: uuidv4(),
-        resultUrl: "https://trialshop-dev-gpg.k8s.tracom.co.ke:2021/success",
+        resultUrl: "https://shop-gpg-dev.k8s.tracom.co.ke:2021/success",
         callbackUrl: "https://mypocket.doctor/cbresult",
         checkoutLines: apiPayload,
       },
