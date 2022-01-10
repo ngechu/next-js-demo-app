@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
           </Layout>
         </CartProvider>
       </Hydrate>
-      <ReactQueryDevtools initialIsOpen />
+      {/* <ReactQueryDevtools initialIsOpen /> */}
     </QueryClientProvider>
   );
 }

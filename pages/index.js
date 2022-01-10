@@ -51,7 +51,7 @@ export default function Home({ products }) {
           className="object-cover"
           src="/rolex.jpg"
           height="300 "
-          width="1200"
+          width="1500"
         />
       </div>
     </div>
